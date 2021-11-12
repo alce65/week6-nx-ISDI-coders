@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Card } from "../../components/books/card";
@@ -6,8 +7,12 @@ import { Grid } from "../../components/core/grid";
 import { Layout } from "../../components/core/layout";
 import { createBookSrv } from "../../services/books-srv";
 
-export default function Books() {
-  const books = createBookSrv().getAllBooks();
+export default function Books({ books }) {
+  /* const [books, setBooks] = useState([]);
+  useEffect(() => {
+    setBooks(createBookSrv().getAllBooks());
+  }, []); */
+
   return (
     <>
       <Head>
@@ -27,4 +32,30 @@ export default function Books() {
       </Layout>
     </>
   );
+}
+
+/**
+ * - getStaticProps()
+ * - getServerSideProps()
+ * Automatically executed in the server before
+ * the component function => its possible to include
+ * the code that needs a secure environment
+ * (it never will be executed in the client)
+ *
+ */
+/* export async function getStaticProps() {
+  return {
+    props: {
+      books: [...createBookSrv().getAllBooks()],
+    },
+    revalidate: 1
+  };
+} */
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      books: [...createBookSrv().getAllBooks()],
+    },
+  };
 }
