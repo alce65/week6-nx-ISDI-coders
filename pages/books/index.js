@@ -43,19 +43,20 @@ export default function Books({ books }) {
  * (it never will be executed in the client)
  *
  */
-/* export async function getStaticProps() {
+export async function getStaticProps() {
   return {
     props: {
       books: [...createBookSrv().getAllBooks()],
     },
-    revalidate: 1
-  };
-} */
-
-export async function getServerSideProps() {
-  return {
-    props: {
-      books: [...createBookSrv().getAllBooks()],
-    },
+    revalidate: 1,
   };
 }
+
+/* export async function getServerSideProps(context) {
+  console.log(context);
+  return {
+    props: {
+      books: [...createBookSrv().getAllBooks()],
+    },
+  };
+} */

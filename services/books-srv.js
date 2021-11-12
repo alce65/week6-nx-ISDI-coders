@@ -10,8 +10,13 @@ export function createBookSrv() {
     return books.find((item) => +item.id === +id);
   };
 
+  const getAllIdBooks = () => {
+    return books.map((item) => item.id);
+  };
+
   return {
     getAllBooks,
     getBookData,
+    getAllIdBooks,
   };
 }
