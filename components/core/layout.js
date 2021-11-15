@@ -3,6 +3,8 @@ import { Header } from "./header";
 import layout from "./layout.module.css";
 
 export function Layout({ children }) {
+  const passwd = process.env.PASSWD;
+  console.log();
   return (
     <div className={layout.container}>
       <Header />
