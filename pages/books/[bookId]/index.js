@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Detail } from "../../../components/books/detail";
 import { Layout } from "../../../components/core/layout";
 import { getAllBooks, getBookById } from "../../../lib/crud";
-import { createBookSrv } from "../../../services/books-srv";
+// import { createBookSrv } from "../../../services/books-srv";
 
 export default function BookDetail({ book }) {
   const router = useRouter();

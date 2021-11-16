@@ -9,5 +9,12 @@ export default function handler(req, res) {
         return res.status(500).json({ Error: err });
       });
   } else if (req.method.toUpperCase() === "POST") {
+    insertBook(req.body)
+      .then((result) => {
+        return res.status(200).json(result);
+      })
+      .catch((err) => {
+        return res.status(500).json({ Error: err });
+      });
   }
 }

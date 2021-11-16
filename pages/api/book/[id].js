@@ -1,4 +1,4 @@
-import { getBookById } from "../../../lib/crud";
+import { deleteBook, getBookById } from "../../../lib/crud";
 export default function handler(req, res) {
   const id = req.query.id;
 
@@ -15,6 +15,13 @@ export default function handler(req, res) {
     case "PATCH":
       return;
     case "DELETE":
+      deleteBook(id)
+        .then((result) => {
+          return res.status(200).json(result);
+        })
+        .catch((err) => {
+          return res.status(500).json({ Error: err });
+        });
       return;
   }
 }
