@@ -1,18 +1,13 @@
-export default function x(req, res) {
-  const data = [
-    {
-      id: 1,
-      authors: "William Gibbson",
-      title: "Neuromante",
-    },
-    {
-      id: 2,
-      authors: "Bruce Sterling",
-      title: "Islas de la Red",
-    },
-  ];
-
+import { getAllBooks, insertBook } from "../../lib/crud";
+export default function handler(req, res) {
   if (req.method.toUpperCase() === "GET") {
-    return res.status(200).json(data);
+    getAllBooks()
+      .then((result) => {
+        return res.status(200).json(result);
+      })
+      .catch((err) => {
+        return res.status(500).json({ Error: err });
+      });
+  } else if (req.method.toUpperCase() === "POST") {
   }
 }
