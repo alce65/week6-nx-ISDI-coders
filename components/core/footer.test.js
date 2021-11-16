@@ -23,17 +23,13 @@ describe("given the component footer", () => {
       expect(renderedElement).toBeTruthy();
       expect(renderedElement).toBeInTheDocument();
     });
-    describe("when text is clicked", () => {
-      /* test("should navigate", () => {
-        // Arrange
-        const renderedElement = screen.getByText(/Powered by/i);
-        //Act
-        fireEvent.click(renderedElement);
-        //Assert
-        const locationHost = window.location.host;
-        console.log(window.history);
-        expect(locationHost).toBe("vercel.com");
-      }); */
+    test("then it should contain a link to Vercel ", () => {
+      // Arrange
+      const renderedElement = screen.getByText(/Powered by/i);
+      //Act
+      //Assert
+      expect(renderedElement.href).toContain("vercel.com");
+      //expect(renderedElement).toHaveAttribute("href", "https://vercel.com");
     });
   });
 });
